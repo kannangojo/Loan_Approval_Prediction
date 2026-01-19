@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Document</title>
+    <style>
+        .body{
+            background-image: url("{{ url_for('static', filename='unnamed.jpg') }}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            margin: 0;
+           align-content: center;
+           
+           font-family:'Times New Roman', Times, serif;
+            
+           
+        }
+        .head_div{
+            border: 5px solid white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            height: fit-content;
+            width: 700px;
+            border-radius: 20px;
+        }
+        
+        .div{
+            
+            color: white;
+            border: 5px solid white;
+            border-radius: 25px;
+           height: fit-content;
+            width:700px;
+            backdrop-filter: blur(10px);
+            margin-left: 20px;
+            margin-bottom: 20px;
+            margin-right: 20px;
+             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+           
+
+
+        }
+        .h1{
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 50px;
+            color: white;
+            text-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+
+        }
+        .label{
+            font-size:large;
+            color: white;
+            font-weight: bold;
+            text-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+
+        }
+        .input{
+            height: 30px;
+            width: 250px;
+            border-radius: 20px;
+            border: 2px solid black;
+            margin-top: 7px;
+            margin-bottom: 7px; 
+        }
+        input, textarea {
+            font-family: "Segoe UI", Arial, sans-serif;
+            font-size: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        input::placeholder,
+        textarea::placeholder {
+            color: gray;             
+            font-size: 14px;
+            font-style: italic;      
+            letter-spacing: 0.5px;
+}
+       
+        
+        .button_Submit{
+            padding: 10px 25px;
+            background-color: darkgreen;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            border: 2px white solid;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .button_Submit:hover{
+        background-color: green;
+        }
+        
+    </style>
+</head>
+<body class="body"><center><div class="head_div">
+    <h1 class="h1">LOAN APPRUVAL FORM</h1></div>
+    <div class="div"><form action="/predict" method="post"><table>
+     <tr> <td><label class="label">NAME:</label></td><td><input type="text" placeholder="Enter your name" class="input"></td></tr>
+     <tr> <td><label class="label">GENDER:</label></td><td><input type="radio" name="gender"  class="gender">Male
+       <input type="radio" name="gender"  class="gender" >Female
+    <input type="radio" name="gender" class="gender">others</td></tr>
+      <tr> <td><label class="label">CREDIT SCORE:</label></td><td><input type="number" name="credit_score" class="input" placeholder="Enter your cerdit score" required></td></tr>
+       <tr><td><label class="label">AGE:</label></td><td><input type="number" class="input" placeholder="Enter your age" required></td></tr>
+       <tr><td><label class="label">ADDRESS:</label></td><td><textarea placeholder="Enter your address" style="font-family: 'Times New Roman', Times, serif;" class="input" ></textarea></td></tr>
+       <tr><td><label class="label">INCOME:</label></td><td><input type="number" name="income" class="input" placeholder="Enter your income" required></td></tr>
+       <tr><td><label class="label">YEARLY INCOME:</label></td><td><input type="number" class="input" placeholder="Enter your yearly income"></td></tr>
+      <tr><td></td><td> <button class="button_Submit">submit</button></td></tr> 
+    </table></form>
+    </div>
+</center>
+</body>
+</html>
+{% if prediction %}
+<h2 style="color:white;">Result: {{ prediction }}</h2>
+{% endif %}
